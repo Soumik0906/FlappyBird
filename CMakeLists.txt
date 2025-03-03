@@ -14,4 +14,8 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(main src/main.cpp)
 target_compile_features(main PRIVATE cxx_std_23)
+target_include_directories(main PRIVATE include)
 target_link_libraries(main PRIVATE SFML::Graphics)
+
+set(ROOT_DIR ${CMAKE_SOURCE_DIR})
+target_compile_definitions(main PRIVATE ROOT_DIR="${ROOT_DIR}/")
