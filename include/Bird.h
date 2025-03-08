@@ -25,8 +25,8 @@ private:
     bool isFalling{};
     bool alive{};
 
-    static constexpr float GRAVITY{ 600.0f };
-    static constexpr float JUMP_VELOCITY{ -350.0f };
+    static constexpr float GRAVITY{ 1500.0f };
+    static constexpr float JUMP_VELOCITY{ -400.0f };
     static constexpr sf::Angle ROTATION_SPEED{ sf::degrees(200.0f) };
 
     void updateRotation(float deltaTime);

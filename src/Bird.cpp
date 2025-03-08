@@ -12,9 +12,9 @@ Bird::Bird(sf::RenderWindow& window)
 , alive(true)
 {
     texture.setSmooth(true);
-    sprite.setScale({ 0.1f, 0.1f });
+    sprite.setScale({ 0.05f, 0.05f });
     sprite.setOrigin(sprite.getGlobalBounds().getCenter());
-    sprite.setPosition({ 200, 600 });
+    sprite.setPosition({ 50, 200 });
 }
 
 void Bird::jump() 
