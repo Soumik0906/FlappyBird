@@ -4,7 +4,11 @@
 #include <ctime>
 
 Pipe::Pipe(sf::RenderWindow& window, float posX, float speed)
-: window(window), texture(), sprite(texture), speed(speed), scored(false)
+: window(window) 
+, texture()
+, sprite(texture)
+, speed(speed)
+, scored(false)
 {
     if (!texture.loadFromFile(ROOT_DIR "assets/pipe.png")) {
         std::cerr << "Error loading pipe texture" << std::endl;
@@ -55,9 +59,13 @@ bool Pipe::checkCollision(const sf::FloatRect& birdBounds) const
     float pipeWidth = static_cast<float>(texture.getSize().x);
     float pipeX = sprite.getPosition().x;
 
-    sf::FloatRect topPipeBounds({ pipeX, gapY - pipeHeight }, { pipeWidth * 0.5f, pipeHeight * 0.5f });
-    sf::FloatRect bottomPipeBounds({ pipeX, gapY + gapSize }, { pipeWidth * 0.5f, pipeHeight * 0.5f }); 
+    float margin{ 15.0f };
+
+    sf::FloatRect topPipeBounds({ pipeX + margin, gapY - pipeHeight * 0.65f }, 
+                               { pipeWidth * 0.5f - margin * 2, pipeHeight * 0.65f - 1.5f * margin });
+
+    sf::FloatRect bottomPipeBounds({ pipeX + margin, gapY + gapSize + 2 * margin  }, 
+                                  { pipeWidth * 0.5f - margin * 2, pipeHeight * 0.5f }); 
 
     return birdBounds.findIntersection(topPipeBounds) || birdBounds.findIntersection(bottomPipeBounds);
 }
-
